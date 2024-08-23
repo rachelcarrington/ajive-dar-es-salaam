@@ -1,7 +1,7 @@
 # I think this function should also allow for ranks to be estimated
 # for initial ranks we use a scree plot, these should be supplied; but for joint and individual ranks they can be estimated within the function
 
-ajive2 <- function( dat, joint_rank=NULL, individual_ranks=NULL, initial_ranks=NULL ){
+ajive <- function( dat, joint_rank=NULL, individual_ranks=NULL, initial_ranks=NULL ){
 
   # Function to implement AJIVE
   # If joint_rank = 0, implements PCA on each data matrix individually
