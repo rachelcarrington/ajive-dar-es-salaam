@@ -2,7 +2,7 @@
 # In the AJIVE function there are 2 methods for doing this: wedin and random
 # In each case, the method returns a threshold for the squared singular values of M (=(U1, ..., Uk)).
 # Components are only kept if the square of the corresponding singular value is greater than both thresholds.
-# In practice the wedin threshold always seems to be 0, so the random threshold is the one that matters.
+# In practice the wedin threshold always seems to be 0, so the random threshold is recommended.
 
 # Random samples
 # Essentially we simulate data matrices from N(0,1), calculate M based on these data matrices, and calculate singular values.
@@ -31,7 +31,6 @@ get_random_threshold <- function( dat, initial_signal_ranks, nsamples=1000, alph
 
 # Wedin samples
 # this always seems to return a threshold of 0, unless alpha is very large (~0.5)
-# I understand the code but I'm not sure of the mathematical reasoning behind it.
 
 get_wedin_threshold <- function( dat, initial_signal_ranks, nsamples=1000, alpha=0.05 ){
   
@@ -52,7 +51,7 @@ get_wedin_threshold <- function( dat, initial_signal_ranks, nsamples=1000, alpha
     
     for ( index in 1:nsamples ){
       # Resample columns
-      col_indexes <- sample( 1:dim(U_tilde)[2], dim(U_tilde)[2], replace=TRUE )
+      col_indexes <- sample(1:dim(U_tilde)[2], dim(U_tilde)[2], replace=TRUE)
       U_tilde_resampled <- U_tilde[, col_indexes]
 
       # Project onto X
@@ -66,18 +65,18 @@ get_wedin_threshold <- function( dat, initial_signal_ranks, nsamples=1000, alpha
     V_tilde <- X_svd$v[, (r + 1):m]
     
     for ( index in 1:nsamples ){
-      ### Resample columns
+      # Resample columns
       col_indexes <- sample(1:dim(V_tilde)[2], dim(V_tilde)[2], replace=TRUE)
       V_tilde_resampled <- V_tilde[, col_indexes]
       
-      ### Project onto X
+      # Project onto X
       V_resampled_projection <- X %*% V_tilde_resampled
       
-      ### Calculate 2-norm of projection
+      # Calculate 2-norm of projection
       V_resampled_norms[index] <- norm(V_resampled_projection, type="2")
     }
     
-    sigma_min <- X_svd$d[r] ## largest singular value in signal
+    sigma_min <- X_svd$d[r] # largest singular value in signal
     
     wedin_bound_samples_block <- rep(NA, nsamples)
     for ( j in 1:nsamples ){
