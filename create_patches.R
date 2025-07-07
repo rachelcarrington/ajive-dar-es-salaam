@@ -1,4 +1,4 @@
-# Generate random patches for each subward
+# Generate 10 random patches for each subward.
 
 library(EBImage)
 library(stringr)
