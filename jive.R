@@ -1,6 +1,7 @@
 jive <- function( dat, joint_rank=1, individual_ranks=rep( 1, length(dat) ), maxiter=1000, tol=10^(-10) ){
   
   # Function to implement the JIVE algorithm
+  ## (not used in the paper)
 
   ## Parameters:
   ## dat: list of data matrices
