@@ -4,13 +4,16 @@ ajive <- function( dat, joint_rank=NULL, individual_ranks=NULL, initial_ranks=NU
   # If joint_rank = 0, implements PCA on each data matrix individually
   # Joint and individual ranks default to 1, if not specified
 
+
+  ## Variables:
   # dat: list of data blocks: rows correspond to individuals, columns to variables; all matrices should have the same number of rows
   # joint_rank: should be a positive integer, defaults to 1 if not set
   # individual_ranks: vector of positive integers, of length equal to number of blocks, ranks default to 1 if not set
   # initial_ranks: initial ranks for first step of the algorithm, length equal to number of blocks,
-  # defaults to sum of joint and individual ranks
+  	## defaults to sum of joint and individual ranks
 
   nblocks <- length(dat)
+
 
   # Check there are at least 2 blocks, with the same number of rows in each.
   if ( nblocks < 2 ){
