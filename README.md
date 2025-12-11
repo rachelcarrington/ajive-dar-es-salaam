@@ -13,5 +13,5 @@ The subward-level features used in our analysis are available here in the file s
 	(need to fix it to estimate initial ranks if not supplied)
 * create_patches.R : code used to create random patches from images
 * estimate_joint_rank.R : estimate the joint rank of 2 or more data matrices
-* jive.R : implementation of the JIVE algorithm (Lock et al., 2013)[https://pmc.ncbi.nlm.nih.gov/articles/PMC3671601/]
+* jive.R : implementation of the JIVE algorithm [Lock et al., 2013](https://pmc.ncbi.nlm.nih.gov/articles/PMC3671601/)
 * transfer_learning.R : implementing transfer learning on image data.
